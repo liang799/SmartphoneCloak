@@ -70,6 +70,8 @@ jobs:
     name: Pre Release
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - name: Download debug artifact
