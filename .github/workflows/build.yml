@@ -66,13 +66,11 @@ jobs:
         name: MyMod-Release
         path: _dist-release/*
 
-  upload_release:
-    name: Upload release artifacts
+  pre-release:
+    name: Pre Release
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
+    
     steps:
     - name: Download debug artifact
       uses: actions/download-artifact@v3
@@ -93,7 +91,14 @@ jobs:
         cd ../MyMod-Release
         zip -r MyMod-Release.zip *
         
-    - uses: ncipollo/release-action@v1
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        artifacts: "MyMod-Debug/*.zip"
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          MyMod-Debug/MyMod-Debug.zip
+          MyMod-Release/MyMod-Release.zip
+
           
