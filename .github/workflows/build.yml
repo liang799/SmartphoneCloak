@@ -99,7 +99,7 @@ jobs:
     - name: Upload debug assets
       uses: softprops/action-gh-release@v1
       with:
-        token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        if: startsWith(github.ref, 'refs/tags/')
         upload_url: ${{ steps.get_release.outputs.upload_url }}
         asset_path: MyMod-Debug/MyMod-Debug.zip
         asset_name: MyMod-Debug.zip
@@ -108,7 +108,7 @@ jobs:
     - name: Upload release assets
       uses: softprops/action-gh-release@v1
       with:
-        token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        if: startsWith(github.ref, 'refs/tags/')
         upload_url: ${{ steps.get_release.outputs.upload_url }}
         asset_path: MyMod-Release/MyMod-Release.zip
         asset_name: MyMod-Release.zip
