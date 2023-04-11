@@ -26,3 +26,6 @@ install(TARGETS SmartphoneCloak
 
 # Install the mod to the game folder when the `GAME_INSTALL_PATH` variable is set.
 zhmmodsdk_install(SmartphoneCloak)
+
+
+add_subdirectory(test)
