@@ -96,20 +96,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
-    - name: Upload debug assets
+    - name: Upload assets
       uses: softprops/action-gh-release@v1
       with:
         if: startsWith(github.ref, 'refs/tags/')
         upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: MyMod-Debug/MyMod-Debug.zip
-        asset_name: MyMod-Debug.zip
-        asset_content_type: application/zip
-
-    - name: Upload release assets
-      uses: softprops/action-gh-release@v1
-      with:
-        if: startsWith(github.ref, 'refs/tags/')
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: MyMod-Release/MyMod-Release.zip
-        asset_name: MyMod-Release.zip
-        asset_content_type: application/zip
+        files: |
+          MyMod-Debug/MyMod-Debug.zip
+          MyMod-Release/MyMod-Release.zip
+          
