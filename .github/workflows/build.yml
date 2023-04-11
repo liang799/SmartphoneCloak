@@ -70,6 +70,8 @@ jobs:
     name: Upload release artifacts
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
     - name: Download debug artifact
@@ -91,18 +93,7 @@ jobs:
         cd ../MyMod-Release
         zip -r MyMod-Release.zip *
         
-    - name: Get release
-      id: get_release
-      uses: bruceadams/get-release@v1.2.2
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-        
-    - name: Upload assets
-      uses: softprops/action-gh-release@v1
+    - uses: ncipollo/release-action@v1
       with:
-        if: startsWith(github.ref, 'refs/tags/')
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        files: |
-          MyMod-Debug/MyMod-Debug.zip
-          MyMod-Release/MyMod-Release.zip
+        artifacts: "MyMod-Debug/*.zip"
           
