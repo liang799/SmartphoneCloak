@@ -24,5 +24,4 @@ Agent 47 can blend in with the crowd / environment
 A new tool that you can use to blend in
 
 ## State Machine Diagram
-![image](https://user-images.githubusercontent.com/71926348/231467983-527a7e51-b3b3-478d-9bf1-aa833b20781c.png)
-
+![image](https://user-images.githubusercontent.com/71926348/231469521-08264c9d-b78d-40e8-95fd-236e9288d44d.png)
