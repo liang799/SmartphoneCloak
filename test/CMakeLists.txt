@@ -12,3 +12,5 @@ FetchContent_MakeAvailable(googletest)
 add_executable(EndToEndTest SmartphoneCloakEndToEndTest.cpp)
 target_link_libraries(EndToEndTest gtest_main)
 add_test(NAME EndToEndTest COMMAND AgentCanAlertObservantNPC)
+
+target_link_libraries(EndToEndTest ZHMModSDK)
